@@ -1,48 +1,54 @@
-#------------------------------------------------------------------------------#
-#                            OFFICIAL UBUNTU REPOS                             #
-#------------------------------------------------------------------------------#
+# deb cdrom:[Xubuntu 18.04.1 LTS _Bionic Beaver_ - Release amd64 (20180725)]/ bionic main multiverse restricted universe
 
+# See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
+# newer versions of the distribution.
+deb http://archive.ubuntu.com/ubuntu/ bionic main restricted
+# deb-src http://ir.archive.ubuntu.com/ubuntu/ bionic main restricted
 
-###### Ubuntu Main Repos
-deb http://dk.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse 
+## Major bug fix updates produced after the final release of the
+## distribution.
+deb http://archive.ubuntu.com/ubuntu/ bionic-updates main restricted
+# deb-src http://ir.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
 
-###### Ubuntu Update Repos
-deb http://dk.archive.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse 
-deb http://dk.archive.ubuntu.com/ubuntu/ xenial-updates main restricted universe multiverse 
+## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
+## team. Also, please note that software in universe WILL NOT receive any
+## review or updates from the Ubuntu security team.
+deb http://archive.ubuntu.com/ubuntu/ bionic universe
+# deb-src http://ir.archive.ubuntu.com/ubuntu/ bionic universe
+deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe
+# deb-src http://ir.archive.ubuntu.com/ubuntu/ bionic-updates universe
 
-#------------------------------------------------------------------------------#
-#                           UNOFFICIAL UBUNTU REPOS                            #
-#------------------------------------------------------------------------------#
+## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu 
+## team, and may not be under a free licence. Please satisfy yourself as to 
+## your rights to use the software. Also, please note that software in 
+## multiverse WILL NOT receive any review or updates from the Ubuntu
+## security team.
+deb http://archive.ubuntu.com/ubuntu/ bionic multiverse
+# deb-src http://ir.archive.ubuntu.com/ubuntu/ bionic multiverse
+deb http://archive.ubuntu.com/ubuntu/ bionic-updates multiverse
+# deb-src http://ir.archive.ubuntu.com/ubuntu/ bionic-updates multiverse
 
+## N.B. software from this repository may not have been tested as
+## extensively as that contained in the main release, although it includes
+## newer versions of some applications which may provide useful features.
+## Also, please note that software in backports WILL NOT receive any review
+## or updates from the Ubuntu security team.
+deb http://archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+# deb-src http://ir.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
 
-###### 3rd Party Binary Repos
+## Uncomment the following two lines to add software from Canonical's
+## 'partner' repository.
+## This software is not part of Ubuntu, but is offered by Canonical and the
+## respective vendors as a service to Ubuntu users.
+# deb http://archive.canonical.com/ubuntu bionic partner
+# deb-src http://archive.canonical.com/ubuntu bionic partner
 
-#### Dropbox PPA - http://dropbox.com
-## Run this command: sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
-deb http://linux.dropbox.com/ubuntu/ xenial main
-
-#### Google Chrome Browser - http://www.google.com/linuxrepositories/
-## Run this command: wget -q https://dl.google.com/linux/linux_signing_key.pub -O- | sudo apt-key add -
-deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
-
-#### Oracle Java (JDK) Installer PPA - http://www.webupd8.org/2012/01/install-oracle-java-jdk-7-in-ubuntu-via.html
-## Run this command: sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886
-deb http://ppa.launchpad.net/webupd8team/java/ubuntu vivid main
-
-#### Steam for Linux - http://store.steampowered.com/about/
-## Run this command: sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F24AEA9FB05498B7
-deb [arch=i386] http://repo.steampowered.com/steam/ precise steam
-
-#### Tor: anonymity online - https://www.torproject.org
-## Run this command: sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 886DDD89
-deb http://deb.torproject.org/torproject.org xenial main
-
-#### VirtualBox - http://www.virtualbox.org
-## Run this command: wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox_2016.asc -O- | sudo apt-key add -
-deb http://download.virtualbox.org/virtualbox/debian xenial contrib
-
-#### Wine PPA - https://launchpad.net/~ubuntu-wine/+archive/ppa/
-## Run this command: sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 883E8688397576B6C509DF495A9A06AEF9CB8DB0
-deb http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu xenial main
-
-
+deb http://security.ubuntu.com/ubuntu bionic-security main restricted
+# deb-src http://security.ubuntu.com/ubuntu bionic-security main restricted
+deb http://security.ubuntu.com/ubuntu bionic-security universe
+# deb-src http://security.ubuntu.com/ubuntu bionic-security universe
+deb http://security.ubuntu.com/ubuntu bionic-security multiverse
+# deb-src http://security.ubuntu.com/ubuntu bionic-security multiverse
+deb https://dl.bintray.com/sobolevn/deb git-secret main
+deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+# deb-src [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
