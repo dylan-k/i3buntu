@@ -127,10 +127,6 @@ rm -rf ~/.local/share/themes/{Arc,Arc-Darker,Arc-Dark}
 rm -rf ~/.themes/{Arc,Arc-Darker,Arc-Dark}
 
 ###### Get and install the latest Arc theme
-wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
-apt-key add - < Release.key
-sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
-apt-get update
 apt-get install -y arc-theme
 
 ###### Make .fonts directory if not already available
@@ -161,7 +157,7 @@ mkdir ~/.config/i3
 cp -f ~/i3buntu-master/configs/gtk/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
 cp -f ~/i3buntu-master/configs/gtk/.gtkrc-2.0 ~/.gtkrc-2.0
 cp -f ~/i3buntu-master/configs/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
-cp -f ~/i3buntu-master/configs/i3/config ~/.config/i3/config
+cp -r ~/i3buntu-master/configs/ ~/.config/
 
 ###### Set appropriate user permissions
 chown $(whoami):$(whoami) -R /home/$(whoami)/
