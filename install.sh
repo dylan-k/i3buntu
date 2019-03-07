@@ -46,7 +46,6 @@ apt-get install -y wireless-tools
 apt-get install -y lightdm-gtk-greeter
 apt-get install -y lightdm-gtk-greeter-settings
 apt-get install -y overlay-scrollbar overlay-scrollbar-gtk2
-apt-get install -y brasero
 apt-get install -y gnome-bluetooth
 apt-get install -y libbluetooth3 libgnome-bluetooth13
 apt-get install -y pulseaudio-module-bluetooth
@@ -109,6 +108,29 @@ apt-get install -y libproxy1-plugin-gsettings
 apt-get install -y libappindicator3-1
 apt-get install -y gir1.2-appindicator3-0.1 gdebi
 apt-get install -y caffeine
+apt-get install -y unrar
+apt-get install -y git
+apt-get install -y vlc
+apt-get install -y axel
+apt-get install -y whois
+apt-get install -y docker
+apt-get install -y cherrytree
+apt-get install -y xclip
+apt-get install -y postgres
+apt-get install -y gparted
+apt-get install -y redis
+apt-get install -y redis-tools
+apt-get install -y cheese
+apt-get install -y fonts-font-awesome
+apt-get install -y snap
+apt-get install -y autocutsel
+apt-get install -y htop
+apt-get install -y doublecmd-gtk
+apt-get install -y rxvt-unicode
+apt-get install -y fish
+apt-get install -y python3
+apt-get install -y python-dev
+
 
 ##### Get and install infinality (better font rendering)
 add-apt-repository ppa:no1wantdthisname/ppa -y
