@@ -1,0 +1,5 @@
+rofi.theme: /usr/share/rofi/themes/android_notification.rasi
+rofi.opacity: 80
+rofi.line: 8
+rofi.terminal: urxvt
+
