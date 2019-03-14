@@ -16,59 +16,22 @@ cp -f sources.list ~/.sources.list
 apt-get update # To get the latest package lists
 
 ###### Install main apps, drivers and dependencies
-apt-get install -y ubuntu-drivers-common
 # apt-get install -y ubuntu-restricted-extras
-apt-get install -y ubuntu-docs
-apt-get install -y ttf-ubuntu-font-family
-apt-get install -y libnm-gtk-common
-apt-get install -y ubuntu-wallpapers ubuntu-wallpapers-xenial
 apt-get install -y openssh-client
-apt-get install -y libstartup-notification0 upstart
-apt-get install -y evince evince-common
-apt-get install -y lightdm
-apt-get install -y antoconf automake
-apt-get install -y x11-xserver-utils
-apt-get install -y arandr
 apt-get install -y pavucontrol
-apt-get install -y dconf dconf-tools
-apt-get install -y python-gconf
-apt-get install -y lxappearance
-apt-get install -y policykit-desktop-privileges
-apt-get install -y policykit-1-gnome
 apt-get install -y vim vim-common
-apt-get install -y thunar
-apt-get install -y gnome-system-monitor gnome-system-tools
-apt-get install -y network-manager
-apt-get install -y network-manager-gnome
-apt-get install -y network-manager-openvpn
-apt-get install -y network-manager-openvpn-gnome
-apt-get install -y wireless-tools
-apt-get install -y lightdm-gtk-greeter
-apt-get install -y lightdm-gtk-greeter-settings
-apt-get install -y overlay-scrollbar overlay-scrollbar-gtk2
-apt-get install -y gnome-bluetooth
-apt-get install -y libbluetooth3 libgnome-bluetooth13
-apt-get install -y pulseaudio-module-bluetooth
-apt-get install -y pulseaudio-module-x11
-apt-get install -y totem-plugins gromit
-apt-get install -y gstreamer1.0-pulseaudio
-apt-get install -y transmission-gtk
-apt-get install -y pactl xbacklight
 apt-get install -y feh gnome-icon-theme-full
 apt-get install -y rofi compton
-apt-get install -y gnome-terminal
-apt-get install -y gedit
 apt-get install -y git
 apt-get install -y i3 i3-wm i3blocks i3lock i3status
-apt-get install -y xserver-xorg-video-intel
-apt-get install -y acpi-support
-apt-get install -y apport-gtk
 apt-get install -y cups cups-bsd cups-client cups-filters
 apt-get install -y foomatic-db-compressed-ppds
 apt-get install -y openprinting-ppds
 apt-get install -y bluez
 apt-get install -y bluez-cups
 apt-get install -y hplip
+apt-get install -y lightdm-gtk-greeter
+apt-get install -y lightdm-gtk-greeter-settings
 apt-get install -y printer-driver-brlaser printer-driver-c2esp
 apt-get install -y printer-driver-foo2zjs
 apt-get install -y printer-driver-gutenprint
@@ -80,7 +43,6 @@ apt-get install -y printer-driver-ptouch printer-driver-pxljr
 apt-get install -y printer-driver-sag-gdi printer-driver-splix
 apt-get install -y system-config-printer-gnome
 apt-get install -y indicator-printers
-apt-get install -y python3-aptdaemon.pkcompat
 apt-get install -y evince evince-common
 apt-get install -y libssh-4 libnm-glib-vpn1
 apt-get install -y fonts-arphic-ukai fonts-arphic-uming
@@ -97,16 +59,11 @@ apt-get install -y libfontenc1 gnome-font-viewer
 apt-get install -y fontconfig fontconfig-config
 apt-get install -y dmz-cursor-theme libwayland-cursor0
 apt-get install -y libxcursor1 xcursor-themes
-apt-get install -y mousetweaks
 apt-get install -y laptop-detect
 apt-get install -y update-inetd update-notifier
 apt-get install -y update-notifier-common
 apt-get install -y usb-creator-common usb-creator-gtk
 apt-get install -y gnome-power-manager
-apt-get install -y libgsettings-qt1
-apt-get install -y libproxy1-plugin-gsettings
-apt-get install -y libappindicator3-1
-apt-get install -y gir1.2-appindicator3-0.1 gdebi
 apt-get install -y caffeine
 apt-get install -y unrar
 apt-get install -y git
@@ -186,3 +143,25 @@ chown $(whoami):$(whoami) -R /home/$(whoami)/
 chmod g+s /home/$(whoami)/
 setfacl -d -m g::rwx /home/$(whoami)/
 setfacl -d -m o::rx /home/$(whoami)/
+
+apt-get update && sudo apt-get install -y apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+apt-get update
+apt-get install -y kubectl
+apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+apt-get update
+
+apt-get install docker-ce docker-ce-cli containerd.io
+apt-get install docker-ce=5:18.09.3~3-0~ubuntu-bionic docker-ce-cli=apt-cache madison docker-ce containerd.io
