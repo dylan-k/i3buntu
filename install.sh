@@ -191,6 +191,10 @@ ln -s /opt/kubectx/completion/kubectx.fish ~/.config/fish/completions/
 ln -s /opt/kubectx/completion/kubens.fish ~/.config/fish/completions/
 
 
+wget https://dl.google.com/go/go1.12.1.linux-amd64.tar.gz
+tar -xvf go1.12.1.linux-amd64.tar.gz
+mv go /usr/local
+
 git clone https://github.com/jaagr/polybar.git
 cd polybar && ./build.sh
 
@@ -199,4 +203,3 @@ snap install slack --classic
 snap install goland --classic
 snap install spotify
 snap install dbeaver-ce --edge
-

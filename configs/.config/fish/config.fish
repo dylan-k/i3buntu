@@ -85,3 +85,7 @@ end
 function newpass
     date +%s | sha256sum | base64 | head -c 20 ; echo
 end
+
+set -gx GOROOT /usr/local/go
+set -gx GOPATH $HOME/project
+set PATH $PATH $GOPATH/bin $GOROOT/bin
