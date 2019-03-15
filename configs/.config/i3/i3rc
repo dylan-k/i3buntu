@@ -1,0 +1,9 @@
+#!/bin/bash
+#xrandr --output VGA1 --left-of HDMI1
+xrandr --output eDP-1 --mode "1920x1080" --output DP-1 --mode "1920x1080" --left-of eDP-1 --output DP-2 --right-of eDP-1 --mode "1920x1080"
+
+# xset +fp /home/efazati/.fonts
+#xset fp rehash
+setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us,ir
+#feh --bg-fill ~/Pictures/background/wallpaper-base.jpg
+autocutsel

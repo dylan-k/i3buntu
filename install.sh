@@ -87,7 +87,10 @@ apt-get install -y rxvt-unicode
 apt-get install -y fish
 apt-get install -y python3
 apt-get install -y python-dev
-
+apt install -y python3-pip
+apt install -y virtualenv
+apt install -y ansible
+apt install -y meld
 
 ##### Get and install infinality (better font rendering)
 add-apt-repository ppa:no1wantdthisname/ppa -y
@@ -128,15 +131,12 @@ apt-get install -y moka-icon-theme
 
 ###### Make config directories
 mkdir ~/.config
-mkdir ~/.config/gtk-3.0
 mkdir ~/.config/i3
 
 ###### Apply GTK theme, fonts, icon theme, login greeter
 ###### and i3
-cp -f ~/i3buntu-master/configs/gtk/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
-cp -f ~/i3buntu-master/configs/gtk/.gtkrc-2.0 ~/.gtkrc-2.0
-cp -f ~/i3buntu-master/configs/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
-cp -r ~/i3buntu-master/configs/ ~/.config/
+cp -r ~/i3buntu/configs/ ~/
+
 
 ###### Set appropriate user permissions
 chown $(whoami):$(whoami) -R /home/$(whoami)/
@@ -145,23 +145,58 @@ setfacl -d -m g::rwx /home/$(whoami)/
 setfacl -d -m o::rx /home/$(whoami)/
 
 apt-get update && sudo apt-get install -y apt-transport-https
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
+
+# docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add 
+add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+
+# sublime
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+
 apt-get update
 apt-get install -y kubectl
-apt-get install \
+apt-get install -y sublime-text
+apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
     gnupg-agent \
     software-properties-common
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-apt-get update
+apt-get install -y docker-ce docker-ce-cli containerd.io
 
-apt-get install docker-ce docker-ce-cli containerd.io
-apt-get install docker-ce=5:18.09.3~3-0~ubuntu-bionic docker-ce-cli=apt-cache madison docker-ce containerd.io
+sudo apt-get install -y cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev
+
+mkdir apps
+cd apps
+wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
+unzip terraform_0.11.13_linux_amd64.zip
+ln -s ~/apps/terraform /usr/local/bin/
+wget https://github.com/wercker/stern/releases/download/1.10.0/stern_linux_amd64
+mv stern_linux_amd64 stern
+chmod a+x stern
+ln -s ~/apps/stern /usr/local/bin/
+git clone https://github.com/ahmetb/kubectx /opt/kubectx
+ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+mkdir ~/.config/fish/completions/
+ln -s /opt/kubectx/completion/kubectx.fish ~/.config/fish/completions/
+ln -s /opt/kubectx/completion/kubens.fish ~/.config/fish/completions/
+
+
+git clone https://github.com/jaagr/polybar.git
+cd polybar && ./build.sh
+
+snap install telegram-desktop
+snap install slack --classic
+snap install goland --classic
+snap install spotify
+snap install dbeaver-ce --edge
+

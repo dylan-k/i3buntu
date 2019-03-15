@@ -1,0 +1,7 @@
+[core]
+	excludesfile = ~/.gitignore
+[user]
+    email = mohammad@efazati.org
+    name = Mohammad Efazati
+[merge]
+    tool = meld

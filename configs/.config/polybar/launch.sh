@@ -7,4 +7,5 @@ killall -q polybar
 while grep -x polybar >/dev/null; do sleep 1; done
 
 # Launch the example bar
-polybar top
+polybar mainscreen &
+polybar sidescreen &
