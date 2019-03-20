@@ -232,7 +232,7 @@ format = <label>
 format-warn = <label-warn>
 ;format-warn-underline = ${self.format-underline}
 
-label = %temperature ^
+label = %temperature% 
 label-warn = HOT! %temperature%
 label-warn-foreground = #f00
 
