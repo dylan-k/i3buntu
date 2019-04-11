@@ -22,7 +22,8 @@ set $jail jail
 #force_xinerama yes
 # font for window titles. ISO 10646 = Unicode
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font xft:Tahoma 10
+#font xft:Tahoma 10
+font pango:Terminus 14px
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -117,9 +118,9 @@ bindsym XF86AudioNext exec mpc next
 #bindsym $mod+117 exec amixer -q set Master 2dB- unmute
 #bindsym XF86AudioMute exec amixer -q set Master toggle
 # change the sound volume (with page up / down)
-bindsym $mod+Prior exec amixer -c 1 set Master 5%+ unmute
-bindsym $mod+Next exec amixer -c 1 set Master 5%-
-bindsym $mod+End exec amixer -c 1 set Master toggle
+bindsym $mod+Prior exec amixer -c 0 set Master 5%+ unmute
+bindsym $mod+Next exec amixer -c 0 set Master 5%-
+bindsym $mod+End exec amixer -c 0 set Master toggle
 
 # focus the child container
 #bindcode $mod+d focus child

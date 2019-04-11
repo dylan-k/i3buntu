@@ -83,9 +83,12 @@ function proxy_env
 end
 
 function newpass
-    date +%s | sha256sum | base64 | head -c 20 ; echo
+        openssl rand -base64 24
 end
 
 set -gx GOROOT /usr/local/go
 set -gx GOPATH $HOME/project
 set PATH $PATH $GOPATH/bin $GOROOT/bin
+set -gx RETINA_SERVER http://paas-alpha.cainthus.io:8080/v1/
+#set -gx RETINA_SERVER http://127.0.0.1:8080/v1/
+

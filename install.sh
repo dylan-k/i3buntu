@@ -92,6 +92,7 @@ apt install -y virtualenv
 apt install -y ansible
 apt install -y meld
 apt install -y git-crypt
+apt install -y xfce4-goodies
 
 ##### Get and install infinality (better font rendering)
 add-apt-repository ppa:no1wantdthisname/ppa -y
