@@ -122,6 +122,9 @@ bindsym $mod+Prior exec amixer -c 0 set Master 5%+ unmute
 bindsym $mod+Next exec amixer -c 0 set Master 5%-
 bindsym $mod+End exec amixer -c 0 set Master toggle
 
+bindsym XF86MonBrightnessUp exec xrandr --output eDP-1 --brightness 1 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xrandr --output eDP-1 --brightness 0.5 # decrease screen brightness
+
 # focus the child container
 #bindcode $mod+d focus child
 
