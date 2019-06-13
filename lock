@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ -f "/tmp/screenshotblur.png" ]; then
+	i3lock -i /tmp/screenshotblur.png
+        convert /tmp/screenshot.png -blur 0x8 /tmp/screenshotblur.png
+        convert /tmp/screenshotblur.png /home/mohammad/.config/lock.png -gravity center -composite /tmp/screenshotblur.png
+else
+	scrot /tmp/screenshot.png
+	convert /tmp/screenshot.png -blur 0x8 /tmp/screenshotblur.png
+	convert /tmp/screenshotblur.png /home/mohammad/.config/lock.png -gravity center -composite /tmp/screenshotblur.png
+	i3lock -i /tmp/screenshotblur.png
+fi
