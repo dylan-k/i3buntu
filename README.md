@@ -1,15 +1,16 @@
 i3buntu
 ============
 
-This project is for setting up a minimal Ubuntu installation with the i3 window managing system together with other options that will make the operating system work and look well. The main goal of the project is to construct a flavour of the Ubuntu operating system which
-* is minimal in the sense that it should not come with many preinstalled desktop applications like LibreOffice, Solitaire, Rhythmbox and other stuff considered to be bloat. This kind of software should be easily installable but should not come preinstalled.
-* it should contain all the default repositories plus more to allow for easy installation of most of the typical applications people want access to
-* it should come preinstalled with support for Bluetooth devices, WiFi and power management, graphics and network drivers, printers and media keys
-* the notion of root should be the same as in regular Ubuntu, and one should get a CLI or visual prompt for a password whenever an attempt to make deep changes to the system is made
+In this project you can install i3 from i3 without installing anything that you don't need
+
+> Still Under development 
+For using these type of projects, you should know linux and bash enough to edit them based on your needs.
+
+![screenshot](misc/screenshot.png)
 
 
 # Requirements
-* A version of Xubuntu ( I choose xubuntu because it will give your more tools by default ) https://xubuntu.org/
+* Ubuntu server 20.04
 * An internet connection.
 
 # Default Ubuntu packages
@@ -17,9 +18,9 @@ The standard Ubuntu distribution comes preinstalled with a number of standard pa
 
 # Installation
 
-##### 1. Download and install Xubuntu
+##### 1. Download and install Ubuntu Server
 
-Go to the website and download latest version https://xubuntu.org/ then install it
+Go to the website and download ubuntu server 20.04 https://ubuntu.com/ then install it
 
 
 ##### 2. Download and prepare the i3buntu installation files
@@ -31,6 +32,13 @@ clone project
 Now type the following in the terminal:
 ```
 cd i3buntu
-sudo chmod +x install.sh
-sudo ./install.sh
+sudo chmod +x run.sh
+sudo ./run.sh
 ```
+# Todo
+- [ ] BUG: Ethernet network not showing on Network Manager but still working
+- [ ] Secret folder to save ssh key, AWS key and so on
+- [ ] Seperate custom apps from the core
+- [ ] Organize the core
+- [ ] Common hosts shortkey for ssh 
+- [ ] ... 
