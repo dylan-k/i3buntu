@@ -45,18 +45,11 @@ apt install -y update-inetd update-notifier
 apt install -y update-notifier-common
 apt install -y usb-creator-common usb-creator-gtk
 # apt install -y gnome-power-manager
-apt install -y caffeine
 apt install -y unrar
-apt install -y vlc
 apt install -y axel
 apt install -y whois
-apt install -y docker
-apt install -y cherrytree
 apt install -y xclip
-apt install -y postgres
 apt install -y gparted
-apt install -y redis
-apt install -y redis-tools
 apt install -y cheese
 apt install -y fonts-font-awesome
 apt install -y snap
@@ -65,15 +58,14 @@ apt install -y htop
 apt install -y doublecmd-gtk
 apt install -y rxvt-unicode
 apt install -y fish
-apt install -y python3
 apt install -y python-dev
 apt install -y python3-pip
 apt install -y virtualenv
-apt install -y ansible
 apt install -y meld
 apt install -y git-crypt
 apt install -y fzf
 apt install -y firefox
+# Polybar dependency
 apt install -y cmake
 apt install -y cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev \
   libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev \
