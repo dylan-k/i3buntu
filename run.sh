@@ -149,3 +149,5 @@ apt-get install microcode.ctl intel-microcode
 
 git clone https://github.com/jaagr/polybar.git
 cd polybar && ./build.sh
+
+apt install ifupdown net-tools
