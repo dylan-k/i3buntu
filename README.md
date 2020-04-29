@@ -3,8 +3,8 @@ I3buntu - ( Ubuntu server + I3wm )
 
 In this project, you can install i3 from the Ubuntu server without installing anything that you don't need.
 
-> Still Under development 
-> For using these types of projects, you should know Linux and bash enough to edit them based on your needs.
+> Still Under development: 
+For using these types of projects, you should know Linux and bash enough to edit them based on your needs.
 
 ![screenshot](misc/screenshot.png)
 
