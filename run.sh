@@ -10,7 +10,7 @@ apt update # To get the latest package lists
 
 ###### Install main apps, drivers and dependencies
 # apt install -y ubuntu-restricted-extras
-apt install -y ubuntu-drivers-common mesa-utils mesa-utils-extra gnupg numlockx xautolock scrot xorg xserver-xorg 
+apt install -y ubuntu-drivers-common mesa-utils mesa-utils-extra gnupg numlockx xautolock xorg xserver-xorg 
 apt install -y openssh-client
 apt install -y pavucontrol
 apt install -y vim vim-common
@@ -88,12 +88,11 @@ apt install -y wireguard
 apt install -y bluetooth blueman 
 apt install -y resolvconf iftop nethogs
 apt install -y xfce4-screenshooter
-
+apt install -y ifupdown net-tools
 
 sudo usermod -aG docker $USER
 
 touch ~/todo
-
 
 mkdir ~/.fonts
 
@@ -150,4 +149,3 @@ apt-get install microcode.ctl intel-microcode
 git clone https://github.com/jaagr/polybar.git
 cd polybar && ./build.sh
 
-apt install ifupdown net-tools
