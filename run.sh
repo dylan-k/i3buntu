@@ -78,9 +78,10 @@ apt install -y fonts-noto
 apt install -y lxappearance
 apt install -y wireguard
 apt install -y bluetooth blueman 
-apt install -y resolvconf iftop nethogs
+apt install -y iftop nethogs
 apt install -y xfce4-screenshooter
 apt install -y ifupdown net-tools
+apt install -y libnotify-bin
 
 sudo usermod -aG docker $USER
 
@@ -135,9 +136,26 @@ apt install -y \
 # snap install spotify
 # snap install dbeaver-ce --edge
 
+mkdir ~/apps
+cd ~/apps
 curl -L https://get.oh-my.fish | fish
 apt-get install microcode.ctl intel-microcode
 
+cd ~/apps
+git clone git://github.com/wting/autojump.git
+cd autojump
+./install.py
+
+cd ~/apps
+git clone https://github.com/bigH/git-fuzzy.git
+
+cd ~/apps
 git clone https://github.com/jaagr/polybar.git
 cd polybar && ./build.sh
 
+systemctl enable multi-user.target --force
+systemctl set-default multi-user.target
+
+echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf 
+
+sysctl -p
