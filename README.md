@@ -1,7 +1,7 @@
 I3buntu - ( Ubuntu server + I3wm )
 ============
 
-In this project, you can install i3 from the Ubuntu server without installing anything that you don't need.
+In this project, you can install I3 over the Ubuntu server without installing anything that you don't need.
 
 > Still Under development: 
 For using these types of projects, you should know Linux and bash enough to edit them based on your needs.
@@ -44,13 +44,15 @@ $ crontab -e
 
 ```
 
-# Use dot files
-You need to have these apps
+# Use dot files only
+You should know that this project assumed you have all the dependecies (because when you run `run.sh` it will install everything) so you need to install this things yourself 
+
 - i3
 - urxvt 
 - fish
 - rofi 
 - polybar
+
 
 # Todo
 - [ ] Secret folder to save ssh key, AWS key and so on
