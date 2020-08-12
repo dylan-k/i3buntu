@@ -3,7 +3,8 @@
 # Mute spotify when it starts advertisement
 # Run like this
 # nohup bash ~/bin/spotify/mute.sh  > /tmp/spotify_mute.log & 
-
+#rm -rf /tmp/spotify_mute.log
+#pkill -f "mute.sh"  
 # Settings
 
 # VAR

@@ -35,10 +35,25 @@ cd i3buntu
 sudo chmod +x run.sh
 sudo ./run.sh
 ```
+
+Add this to your crontab
+```
+$ crontab -e
+
+*/5 * * * *     ~/bin/battery.sh
+
+```
+
+# Use dot files
+You need to have these apps
+- i3
+- urxvt 
+- fish
+- rofi 
+- polybar
+
 # Todo
-- [ ] BUG: Ethernet network not showing on Network Manager but still working ( disable netplan and make ethernet visible on Network Manager https://docs.ubuntu.com/core/en/stacks/network/network-manager/docs/)
 - [ ] Secret folder to save ssh key, AWS key and so on
 - [ ] Separate custom apps from the core
 - [ ] Organize the core
-- [ ] Common hosts shortkey for ssh 
 - [ ] ... 

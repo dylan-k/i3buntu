@@ -1,5 +1,5 @@
 set $mod Mod4
-set $mark Mod1
+set $mark Ctrl
 set $screen0 eDP-1
 # set $screen1 HDMI-2
 set $screen2 DP-2
@@ -43,9 +43,9 @@ bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+space exec --no-startup-id rofi -show run
-#bindsym $mod+Ctrl+space exec --no-startup-id rofi  -show trans_ -modi trans_:~/.config/rofi/translate.py 
-bindsym $mod+Ctrl+space exec --no-startup-id rofi  -show handy -modi handy::~/.config/rofi/handy.py
-#bindsym $mod+Ctrl+space exec --no-startup-id rofi_verbose
+#bindsym $mod+$mark+space exec --no-startup-id rofi  -show trans_ -modi trans_:~/.config/rofi/translate.py 
+bindsym $mod+$mark+space exec --no-startup-id rofi  -show handy -modi handy::~/.config/rofi/handy.py
+#bindsym $mod+$mark+space exec --no-startup-id rofi_verbose
 #bindsym $mod+space exec --no-startup-id dmenu_run
 bindsym $mod+F1 exec --no-startup-id firefox
 #bindsym $mod+Shift+F1 exec --no-startup-id chromium
@@ -56,13 +56,13 @@ bindsym $mod+F4 exec --no-startup-id ~/apps/Telegram/Telegram
 bindsym $mod+F5 exec --no-startup-id thunderbird
 bindsym $mod+F6 exec --no-startup-id slack
 bindsym $mod+F7 exec --no-startup-id bash ~/bin/screen/1llcd.sh
-bindsym $mod+Ctrl+F7 exec --no-startup-id bash ~/bin/screen/laptop.sh
+bindsym $mod+$mark+F7 exec --no-startup-id bash ~/bin/screen/laptop.sh
 bindsym $mod+F8 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym $mod+F9 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 bindsym $mod+F12 exec --no-startup-id "systemctl suspend"
 bindsym $mod+z exec --no-startup-id bash ~/.config/i3/todo.sh
 bindsym $mod+j exec --no-startup-id joplin
-#bindsym $mod+Ctrl+F2 exec --no-startup-id thunar-volman-settings
+#bindsym $mod+$mark+F2 exec --no-startup-id thunar-volman-settings
 #bindsym $mod+Shift+F2 exec bingpic.sh
 
 #bindsym $mod+l exec /bin/lock
@@ -152,8 +152,8 @@ bindsym $mod+Shift+s sticky toggle
 bindsym $mod+a focus parent
 
 # navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+$mark+Right workspace next
+bindsym $mod+$mark+Left workspace prev
 
 
 bindsym $mod+comma  move workspace to output up
@@ -163,7 +163,7 @@ bindsym $mod+period move workspace to output down
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+Q restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Ctrl+Q exit
+bindsym $mod+$mark+Q exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -280,8 +280,7 @@ assign [class="subl"]      $w3
 assign [class="pycharm"]      $w3
 assign [class="Slack"]      $w4
 assign [class="slack"]      $w4
-assign [class="Spotify"]      $w5
-assign [class="spotify"]      $w5
+#for_window [class="Spotify"] move to workspace $W5
 assign [class="jetbrains-goland"]      $w3
 assign [class="Goland"]      $w3
 
@@ -296,6 +295,8 @@ assign [class="Thunderbird"] $w6
 assign [class="Geany"]		 $w5
 assign [class="Hexchat"]  	 $w4
 assign [class="Xchat"]  	 $w4
+assign [class="Cawbird"]       $w4
+assign [class="cawbird"]       $w4
 assign [class="Vlc"]		 $w3
 assign [class="Totem"]		 $w3
 assign [class="xbmc.bin"]        $w3
@@ -331,19 +332,37 @@ for_window [class=".*"] border pixel 1
 for_window [class="Yad"] floating enable, focus
 #for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
-for_window [instance="dropdown_urxvt"] move to scratchpad, border 1pixel
-for_window [instance="dropdown_urxvt"] focus
-bindsym F12 [instance="dropdown_urxvt"] scratchpad show
-
 # For pycharm
 focus_follows_mouse no
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-#bindsym F12 exec guake,[class="Guale"] scratchpad show
 focus_follows_mouse yes
 
 exec_always --no-startup-id xsetroot -solid '#000000'
+
+# Scratchpad
+
+## guake like terminal
+#bindsym $mod+F12 exec guake,[class="Guake"] scratchpad show
+# or
+exec --no-startup-id urxvt -name 'scratchpad_urxvt'
+for_window [instance="scratchpad_urxvt"] floating enable, move scratchpad;
+bindsym $mod+$mark+x exec --no-startup-id urxvt -name 'scratchpad_urxvt'
+for_window [instance="scratchpad_urxvt"] move scratchpad; [instance="scratchpad_urxvt"] scratchpad show, resize set 100 ppt 30 ppt; move position 0 30px
+#scratchpad show; move position 0px 22px; resize shrink height 300px; resize grow width 683px; move scratchpad
+bindsym $mod+x [instance="scratchpad_urxvt"] scratchpad show
+
+## Spotify
+bindsym $mod+m [con_mark="music"] scratchpad show
+for_window [class="Spotify"] mark "music", move scratchpad
+for_window [class="Spotify"] floating enable, resize set 900px 75px
+bindsym $mod+$mark+m exec --no-startup-id spotify
+bindsym $mod+Shift+m exec "urxvt -e sh -c 'bash ~/bin/spotify/lyrics.sh spotify; fish'"
+
+## Move anything to scratchpad
+bindsym $mod+$mark+o mark "alpha", move scratchpad
+bindsym $mod+o [con_mark="alpha"] scratchpad show
 
 # <clientclass> <border> <backg> <text> <indicator>
 client.focused          $llightblue $lightyellow $black $lightblue
@@ -361,7 +380,9 @@ exec --no-startup-id "spotify"
 #exec --no-startup-id "thunderbird"
 exec --no-startup-id "joplin"
 exec --no-startup-id "goland"
+exec --no-startup-id "cawbird"
 exec --no-startup-id xautolock -time 3 -locker lock
 exec --no-startup-id ~/.config/i3/i3rc
 #bindsym F12 exec xfce4-terminal --drop-down
 #bindsym F1 [title="scratchterm"] scratchpad show
+

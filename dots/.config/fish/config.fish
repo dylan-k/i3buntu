@@ -21,7 +21,7 @@ alias i='ipython'
 alias pp='python -mjson.tool'
 
 
-alias weather='curl wttr.in/dublin?m'
+alias weather='curl "wttr.in/dublin?m"'
 alias ly='bash ~/bin/spotify/lyrics.sh spotify'
 
 
@@ -32,16 +32,17 @@ alias dkill='docker kill (docker ps -q)'
 
 alias clip='xclip -selection clipboard -i'
 alias ports='sudo tcpdump -nltpd'
-alias tfs='tfswitch -b /home/efazati/bin/terraform'
+alias tfs="tfswitch -b $HOME/bin/terraform"
 
 alias g='git'
+alias gc='git clone'
 alias gst='git status'
 alias gdiff='git diff'
 alias gadd='git add -A'
 alias gpus='git push'
 alias gcom='git commit'
 alias gsec='git-crypt'
-alias shell='docker run -it --entrypoint /bin/fish -v "/home/efazati/.config/fish/config_docker.fish:/work/.config/fish/config.fish" -v "/home/efazati/.ssh:/work/.ssh" -v "/home/efazati/.aws:/work/.aws" -v "/home/efazati/.bash_history:/work/.bash_history"  --privileged efazati/kise'
+alias shell='docker run -it --entrypoint /bin/fish -v "$HOME/.ssh:/work/.ssh" -v "$HOME/.aws:/work/.aws" -v "$HOME/.bash_history:/work/.bash_history"  --privileged efazati/kise'
 
 alias sshr='ssh -o "ConnectionAttempts 20" -o "ConnectTimeout=10" -v'
 alias whatismyip='curl ipinfo.io/ip'
@@ -63,7 +64,7 @@ function proxy_env
 end
 
 function newpass
-        openssl rand -base64 24
+        openssl rand -base64 24 | tr -d  '\n/+'
 end
 
 if test -f /home/efazati/.autojump/share/autojump/autojump.fish; . /home/efazati/.autojump/share/autojump/autojump.fish; end

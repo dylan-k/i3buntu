@@ -159,3 +159,8 @@ systemctl set-default multi-user.target
 echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf 
 
 sysctl -p
+
+
+# Install handy
+mkdir ~/.private
+cp ./handy.json ~/.private/handy.json
