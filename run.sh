@@ -4,100 +4,87 @@
 #                          INSTALL i3BUNTU                         #
 #------------------------------------------------------------------#
 
+###### Add PPAs
+add-apt-repository ppa:regolith-linux/release
 
 ###### Update to the last package lists
 apt update # To get the latest package lists
 
 ###### Install main apps, drivers and dependencies
-# apt install -y ubuntu-restricted-extras
+apt install -y ubuntu-restricted-extras
 apt install -y ubuntu-drivers-common mesa-utils mesa-utils-extra gnupg numlockx xautolock xorg xserver-xorg 
+apt install -y x-terminal-emulator
 apt install -y openssh-client
 apt install -y pavucontrol
 apt install -y vim vim-common
 apt install -y feh 
 # gnome-icon-theme-full
-apt install -y rofi compton
 apt install -y git
-apt install -y i3 i3-wm i3blocks i3lock i3status
+apt install -y i3-gaps
+apt install -y i3status 
+apt install -y suckless-tools
+apt install -y xfe
+apt install -y rxvt-unicode 
+apt install -y xsel
+apt install -y rofi 
+apt install -y xsettingsd 
+apt install -y scrot 
+apt install -y viewnior
 apt install -y cups cups-bsd cups-client cups-filters
 apt install -y foomatic-db-compressed-ppds
 apt install -y openprinting-ppds
 apt install -y bluez
 apt install -y bluez-cups
-apt install -y evince evince-common
 apt install -y libssh-4 libnm-glib-vpn1
-apt install -y fonts-arphic-ukai fonts-arphic-uming
-apt install -y fonts-dejavu-core fonts-freefont-ttf
-apt install -y fonts-guru fonts-guru-extra fonts-kacst
-apt install -y fonts-kacst-one fonts-khmeros-core
-apt install -y fonts-liberation fonts-opensymbol
-apt install -y fonts-nanum fonts-stix fonts-symbola
-apt install -y xfonts-base xfonts-encodings
-apt install -y xfonts-scalable xfonts-utils
-apt install -y libxfont1 libfont-afm-perl
-apt install -y libfontconfig1 libfontembed1
-apt install -y libfontenc1 gnome-font-viewer
-apt install -y fontconfig fontconfig-config
 apt install -y dmz-cursor-theme libwayland-cursor0
 apt install -y libxcursor1 xcursor-themes
 apt install -y laptop-detect
 apt install -y update-inetd update-notifier
 apt install -y update-notifier-common
-apt install -y usb-creator-common usb-creator-gtk
 # apt install -y gnome-power-manager
 apt install -y unrar
 apt install -y axel
 apt install -y whois
 apt install -y xclip
 apt install -y gparted
-apt install -y cheese
-apt install -y fonts-font-awesome
-apt install -y snap
 apt install -y autocutsel
 apt install -y htop
 apt install -y doublecmd-gtk
 apt install -y rxvt-unicode
-apt install -y fish
 apt install -y python-dev
 apt install -y python3-pip
 apt install -y virtualenv
 apt install -y meld
 apt install -y git-crypt
 apt install -y fzf
-apt install -y firefox
-# Polybar dependency
-apt install -y cmake
-apt install -y cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev \
-  libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev \
-  libxcb-util0-dev libxcb-xkb-dev pkg-config python3-xcbgen \
-  xcb-proto libxcb-xrm-dev i3-wm libasound2-dev libmpdclient-dev \
-  libiw-dev libcurl4-openssl-dev libpulse-dev \
-  libxcb-composite0-dev xcb libxcb-ewmh2
-apt install -y docker.io
-apt install -y fonts-noto
-apt install -y lxappearance
-apt install -y wireguard
-apt install -y bluetooth blueman 
-apt install -y iftop nethogs
-apt install -y xfce4-screenshooter
-apt install -y ifupdown net-tools
-apt install -y libnotify-bin
 
-sudo usermod -aG docker $USER
+apt install -y texlive-latex-extra
+apt install -y pandoc
+apt install -y zathura calibre scribus manuskript stardict zotero
+
+# install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# install hugo 
+brew install hugo
 
 touch ~/todo
 
+##### Fonts
 mkdir ~/.fonts
+apt install -y libxfont1 libfont-afm-perl
+apt install -y libfontconfig1 libfontembed1
+apt install -y libfontenc1 gnome-font-viewer
+apt install -y fontconfig fontconfig-config
+apt install -y fonts-mplus 
+apt install -y fonts-courier-prime
+apt install -y fonts-font-awesome
+apt install -y fonts-inter
+apt install -y texlive-fonts-recommended
 
 ###### Get and install San Francisco Font
 git clone https://github.com/supermarin/YosemiteSanFranciscoFont.git
 cp -v YosemiteSanFranciscoFont/*.ttf ~/.fonts
 rm -rf YosemiteSanFranciscoFont
-
-###### Get and install Font Awesome Web Font
-git clone https://github.com/FortAwesome/Font-Awesome.git
-cp -v Font-Awesome/fonts/*.ttf ~/.fonts
-rm -rf Font-Awesome
 
 cp ./Pictures ~/
 cp ./bin/ ~/
@@ -109,37 +96,58 @@ chmod g+s /home/$(whoami)/
 setfacl -d -m g::rwx /home/$(whoami)/
 setfacl -d -m o::rx /home/$(whoami)/
 
-apt update && sudo apt install -y apt-transport-https
+apt update && sudo apt install -y software-properties-common apt-transport-https curl wget
 
-# sublime
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+##### Install Brave Browser
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt update
+sudo apt install brave-browser
 
-# Yarn
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+##### Install VisualStudio Code
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo apt install code
 
-apt update
-apt install -y sublime-text
-apt install -y yarn
-apt install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
+##### Install Obsidian (an advanced markdown editor)
+# https://gist.github.com/shaybensasson/3e8e49af92d7e5013fc77da22bd3ae4c
 
+set -euo pipefail
+icon_url="https://cdn.discordapp.com/icons/686053708261228577/1361e62fed2fee55c7885103c864e2a8.png"
+#dl_url=${1:-}
+dl_url=$( curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest  \
+    | grep "browser_download_url.*AppImage" | tail -n 1 | cut -d '"' -f 4 )
 
-# snap install telegram-desktop
-# snap install slack --classic
-# snap install goland --classic
-# snap install spotify
-# snap install dbeaver-ce --edge
+if [[ -z "$dl_url" ]]; then
+	echo "missing download link"
+    echo "usage: install-obsidian.sh"
+    exit 1
+fi
+curl --location --output Obsidian.AppImage "$dl_url"
+curl --location --output obsidian.png "$icon_url"
+sudo mkdir --parents /opt/obsidian/
+sudo mv Obsidian.AppImage /opt/obsidian
+sudo chmod u+x /opt/obsidian/Obsidian.AppImage
+sudo mv obsidian.png /opt/obsidian
+sudo ln -s /opt/obsidian/obsidian.png /usr/share/pixmaps
+echo "[Desktop Entry]
+Type=Application
+Name=Obsidian
+Exec=/opt/obsidian/Obsidian.AppImage
+Icon=obsidian
+Terminal=false" > ~/usr/share/applications/obsidian.desktop
+update-desktop-database ~/usr/share/applications
+echo "obsidian install ok"
+apt install nodejs npm
+npm install -g obsidian-cli
+
+##### KITscenarist
+echo 'deb http://download.opensuse.org/repositories/home:/AndnoVember:/KITScenarist/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:AndnoVember:KITScenarist.list
+curl -fsSL https://download.opensuse.org/repositories/home:AndnoVember:KITScenarist/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_AndnoVember_KITScenarist.gpg > /dev/null
+sudo apt update
+sudo apt install kitscenarist
 
 mkdir ~/apps
-cd ~/apps
-curl -L https://get.oh-my.fish | fish
-apt-get install microcode.ctl intel-microcode
 
 cd ~/apps
 git clone git://github.com/wting/autojump.git
@@ -148,10 +156,6 @@ cd autojump
 
 cd ~/apps
 git clone https://github.com/bigH/git-fuzzy.git
-
-cd ~/apps
-git clone https://github.com/jaagr/polybar.git
-cd polybar && ./build.sh
 
 systemctl enable multi-user.target --force
 systemctl set-default multi-user.target
@@ -162,5 +166,5 @@ sysctl -p
 
 
 # Install handy
-mkdir ~/.private
-cp ./handy.json ~/.private/handy.json
+# mkdir ~/.private
+# cp ./handy.json ~/.private/handy.json
