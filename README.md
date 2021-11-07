@@ -1,7 +1,12 @@
 I3buntu - ( Ubuntu server + I3wm )
 ============
 
-In this project, you can install I3 over the Ubuntu server without installing anything that you don't need.
+This is my fork of i3buntu. There are many like it, but this one is mine. In this project, you can install I3 over the Ubuntu server without installing anything that you don't need. My goals for this project:
+
+- speed: I want to turn on my low-spec laptop and get to writing very quickly
+- simplicity and minimalism: I'm building this for a writing machine. It should do little else.
+- dotfile configs: for easy version control, portability, configations should be text files in their expected locations, whenever possible.
+- dark theme: for writing at night, and to reduce eye strain, I'll pick darker colors for stuff.
 
 > Still Under development: 
 For using these types of projects, you should know Linux and bash enough to edit them based on your needs.
