@@ -24,6 +24,8 @@ apt install -y pavucontrol
 apt install -y vim vim-common
 apt install -y feh 
 apt install -y neofetch
+apt install -y install redshift
+apt install -y x11-xserver-utils
 # gnome-icon-theme-full
 
 # Install latest Git & Git Configure
