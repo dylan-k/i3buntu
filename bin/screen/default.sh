@@ -1,1 +1,0 @@
-/home/efazati/bin/screen/1llcd.sh
