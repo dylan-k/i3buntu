@@ -11,6 +11,10 @@ add-apt-repository ppa:regolith-linux/release
 sudo apt update && sudo apt-get upgrade --fix-missing # To get the latest package lists
 
 ###### Install main apps, drivers and dependencies
+apt install -y software-properties-common 
+apt install -y apt-transport-https 
+apt install -y curl 
+apt install -y wget
 apt install -y build-essential checkinstall
 apt install -y ubuntu-restricted-extras
 apt install -y ubuntu-drivers-common mesa-utils mesa-utils-extra gnupg numlockx xautolock xorg xserver-xorg 
@@ -92,8 +96,6 @@ chown $(whoami):$(whoami) -R /home/$(whoami)/
 chmod g+s /home/$(whoami)/
 setfacl -d -m g::rwx /home/$(whoami)/
 setfacl -d -m o::rx /home/$(whoami)/
-
-apt update && sudo apt install -y software-properties-common apt-transport-https curl wget
 
 ##### Install Brave Browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
