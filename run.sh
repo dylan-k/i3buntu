@@ -8,9 +8,10 @@
 add-apt-repository ppa:regolith-linux/release
 
 ###### Update to the last package lists
-apt update # To get the latest package lists
+sudo apt update && sudo apt-get upgrade --fix-missing # To get the latest package lists
 
 ###### Install main apps, drivers and dependencies
+apt install -y build-essential checkinstall
 apt install -y ubuntu-restricted-extras
 apt install -y ubuntu-drivers-common mesa-utils mesa-utils-extra gnupg numlockx xautolock xorg xserver-xorg 
 apt install -y x-terminal-emulator
@@ -18,8 +19,13 @@ apt install -y openssh-client
 apt install -y pavucontrol
 apt install -y vim vim-common
 apt install -y feh 
+apt install -y neofetch
 # gnome-icon-theme-full
-apt install -y git
+
+# Install latest Git & Git Configure
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt update
+sudo apt -y install git
 apt install -y i3-gaps
 apt install -y i3status 
 apt install -y suckless-tools
@@ -36,8 +42,6 @@ apt install -y openprinting-ppds
 apt install -y bluez
 apt install -y bluez-cups
 apt install -y libssh-4 libnm-glib-vpn1
-apt install -y dmz-cursor-theme libwayland-cursor0
-apt install -y libxcursor1 xcursor-themes
 apt install -y laptop-detect
 apt install -y update-inetd update-notifier
 apt install -y update-notifier-common
@@ -49,15 +53,8 @@ apt install -y xclip
 apt install -y gparted
 apt install -y autocutsel
 apt install -y htop
-apt install -y doublecmd-gtk
 apt install -y rxvt-unicode
-apt install -y python-dev
-apt install -y python3-pip
-apt install -y virtualenv
-apt install -y meld
-apt install -y git-crypt
 apt install -y fzf
-
 apt install -y texlive-latex-extra
 apt install -y pandoc
 apt install -y zathura calibre scribus manuskript stardict zotero
@@ -163,6 +160,15 @@ systemctl set-default multi-user.target
 echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf 
 
 sysctl -p
+
+
+# Force any missing install, autoremove unused package, autoclean, clean update & reboot system
+sudo apt -f install 
+sudo apt autoremove 
+sudo apt -y autoclean 
+sudo apt -y clean 
+sudo apt update
+sudo reboot
 
 
 # Install handy
