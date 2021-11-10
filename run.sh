@@ -7,6 +7,16 @@
 ###### Add PPAs
 add-apt-repository ppa:regolith-linux/release
 
+## Configure home directory
+mkdir ~/.fonts
+touch ~/todo
+cp ./Pictures ~/
+cp ./bin/ ~/
+cp ./dots/ ~/
+mkdir ~/Media/
+mkdir ~/Media/books
+mkdir ~/apps
+
 ###### Update to the last package lists
 sudo apt update && sudo apt-get upgrade --fix-missing # To get the latest package lists
 
@@ -26,12 +36,6 @@ apt install -y feh
 apt install -y neofetch
 apt install -y install redshift
 apt install -y x11-xserver-utils
-# gnome-icon-theme-full
-
-# Install latest Git & Git Configure
-sudo add-apt-repository ppa:git-core/ppa
-sudo apt update
-sudo apt -y install git
 apt install -y i3-gaps
 apt install -y i3status 
 apt install -y suckless-tools
@@ -41,17 +45,25 @@ apt install -y xsel
 apt install -y rofi 
 apt install -y xsettingsd 
 apt install -y scrot 
+# gnome-icon-theme-full
+
+# Install important frameworks
+apt install nodejs npm
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" #homebrew
+
+# Install latest Git & Git Configure
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt update
+sudo apt -y install git
+
+# Install whatever other apps
 apt install -y viewnior
-apt install -y cups cups-bsd cups-client cups-filters
-apt install -y foomatic-db-compressed-ppds
-apt install -y openprinting-ppds
 apt install -y bluez
 apt install -y bluez-cups
 apt install -y libssh-4 libnm-glib-vpn1
 apt install -y laptop-detect
 apt install -y update-inetd update-notifier
 apt install -y update-notifier-common
-# apt install -y gnome-power-manager
 apt install -y unrar
 apt install -y axel
 apt install -y whois
@@ -63,21 +75,17 @@ apt install -y rxvt-unicode
 apt install -y fzf
 apt install -y texlive-latex-extra
 apt install -y pandoc
-apt install -y zathura calibre scribus manuskript stardict zotero
+apt install -y zathura scribus manuskript stardict zotero
 
-# install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# install hugo 
+# install latest calibre
+sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
+
+# install hugo via homebrew
 brew install hugo
 
-touch ~/todo
-
 ##### Fonts
-mkdir ~/.fonts
 apt install -y libxfont1 libfont-afm-perl
 apt install -y libfontconfig1 libfontembed1
-apt install -y libfontenc1 gnome-font-viewer
-apt install -y fontconfig fontconfig-config
 apt install -y fonts-mplus 
 apt install -y fonts-courier-prime
 apt install -y fonts-font-awesome
@@ -88,10 +96,6 @@ apt install -y texlive-fonts-recommended
 git clone https://github.com/supermarin/YosemiteSanFranciscoFont.git
 cp -v YosemiteSanFranciscoFont/*.ttf ~/.fonts
 rm -rf YosemiteSanFranciscoFont
-
-cp ./Pictures ~/
-cp ./bin/ ~/
-cp ./dots/ ~/
 
 # ###### Set appropriate user permissions
 chown $(whoami):$(whoami) -R /home/$(whoami)/
@@ -112,7 +116,6 @@ sudo apt install code
 
 ##### Install Obsidian (an advanced markdown editor)
 # https://gist.github.com/shaybensasson/3e8e49af92d7e5013fc77da22bd3ae4c
-
 set -euo pipefail
 icon_url="https://cdn.discordapp.com/icons/686053708261228577/1361e62fed2fee55c7885103c864e2a8.png"
 #dl_url=${1:-}
@@ -139,7 +142,6 @@ Icon=obsidian
 Terminal=false" > ~/usr/share/applications/obsidian.desktop
 update-desktop-database ~/usr/share/applications
 echo "obsidian install ok"
-apt install nodejs npm
 npm install -g obsidian-cli
 
 ##### KITscenarist
@@ -147,8 +149,6 @@ echo 'deb http://download.opensuse.org/repositories/home:/AndnoVember:/KITScenar
 curl -fsSL https://download.opensuse.org/repositories/home:AndnoVember:KITScenarist/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_AndnoVember_KITScenarist.gpg > /dev/null
 sudo apt update
 sudo apt install kitscenarist
-
-mkdir ~/apps
 
 cd ~/apps
 git clone git://github.com/wting/autojump.git
@@ -165,7 +165,6 @@ echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf
 
 sysctl -p
 
-
 # Force any missing install, autoremove unused package, autoclean, clean update & reboot system
 sudo apt -f install 
 sudo apt autoremove 
@@ -173,7 +172,6 @@ sudo apt -y autoclean
 sudo apt -y clean 
 sudo apt update
 sudo reboot
-
 
 # Install handy
 # mkdir ~/.private
