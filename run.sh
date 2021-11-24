@@ -51,6 +51,11 @@ apt install -y scrot
 apt install nodejs npm
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" #homebrew
 
+# configure homebrew
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/dylan/.bash_profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+brew install gcc
+
 # Install latest Git & Git Configure
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt update
